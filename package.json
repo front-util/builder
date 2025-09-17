@@ -1,52 +1,40 @@
 {
-  "name": "bun-pkg-template",
+  "name": "@front-utils/builder",
   "version": "0.1.0",
-  "description": "template",
+  "description": "build configuration",
   "author": "IVGolubev",
   "license": "ISC",
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com:garryk3/bun-pkg-template.git"
+    "url": "https://github.com/front-util/builder"
   },
-  "types": "./types/src/index.d.ts",
   "exports": {
-    ".": "./dist/index.js",
-    "./types/*": "./types/src/*.d.ts",
-    "./types": "./types/src/index.d.ts",
-    "./packages": "./src/index.ts",
-    "./types/index.d.ts": "./types/src/index.d.ts"
+    ".": "./dist/index.js"
   },
   "imports": {
     "#src/*": "./src/*"
   },
   "scripts": {
     "check-lint": "eslint --max-warnings=0 --fix",
-    "check-types": "tsc --noEmit",
-    "test": "bun test",
     "publish": "bun run build && npm publish --access public",
     "build-lib": "bun build ./src/index.ts --outdir ./dist --target browser --minify --format esm",
-    "build": "rm -rf dist && rm -rf types && bun run build-lib & tsc --p tsconfig.build.json"
+    "build": "rm -rf dist && bun run build-lib"
   },
-  "browserslist": [
-    "chrome > 83",
-    "safari > 14.0"
-  ],
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged --no-stash",
-    "pre-push": "bun run test",
     "preserveUnused": true
   },
   "publishConfig": {
     "access": "public",
     "ignore": [
-      ".github/",
-      "tsconfig.json"
+      ".github/"
     ]
   },
   "keywords": [
     "Javascript",
-    "Utils"
+    "Utils",
+    "RsPack configuration"
   ],
   "engines": {
     "node": ">=18.0.0"
