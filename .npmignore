@@ -1,0 +1,16 @@
+.github
+.idea
+.eslintcache
+.vscode/launch.json
+.version
+.nx
+
+.gitignore
+lintstagedrc.json
+bun.lockb
+eslint.config.js
+.lintstagedrc.json
+tsconfig.json
+tsconfig.build.json
+
+tests/
