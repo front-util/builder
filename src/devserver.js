@@ -1,11 +1,10 @@
+/** @typedef {import('../types/index.d.ts').DevServerOptions} DevServerOptions */
+
 /**
- * @typedef {import('@rspack/core').DevServer} DevServer
- */
-/**
- * Creates a module federation configuration.
- * @param {number} port - Partial module federation configuration.
- * @param {Partial<DevServer>} config - Partial module federation configuration.
- * @returns {DevServer} - Complete module federation configuration.
+ * Creates a dev server configuration.
+ * @param {number} port - The port number for the dev server.
+ * @param {DevServerOptions} [config] - Additional dev server configuration options.
+ * @returns {DevServer} The complete dev server configuration.
  */
 export const createDevServer = (port, config) => ({
     port,

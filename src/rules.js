@@ -1,8 +1,10 @@
 import { generateFileName } from './generator.js';
 
+/** @typedef {import('../types/index.d.ts').Env} Env */
+
 /**
  * Converts browser targets object to an array of target strings for SWC.
- * @param {Object} [browserTargets] - Object with browser names as keys and minimum versions as values.
+ * @param {Record<string, number>} [browserTargets] - Object with browser names as keys and minimum versions as values.
  * @returns {string[]} Array of target strings in the format 'browser >= version'.
  */
 export const convertBrowserTargetsToSwcTargets = (browserTargets) => {
@@ -14,11 +16,10 @@ export const convertBrowserTargetsToSwcTargets = (browserTargets) => {
 
 /**
  * Generates an array of Rspack rules based on the environment and options.
- * @param {Object} env - The environment object.
- * @param {boolean} env.production - Indicates if the environment is production.
+ * @param {Env} env - The environment object.
  * @param {string} appName - The application name.
- * @param {Object} [browserTargets] - Browser targets for SWC and CSS loaders.
- * @returns {Array} An array of Rspack rules.
+ * @param {Record<string, number>} [browserTargets] - Browser targets for SWC and CSS loaders.
+ * @returns {RuleSetRule[]} An array of Rspack rules.
  */
 export const getRules = (env, appName, browserTargets) => {
     const isProduction = env.production;

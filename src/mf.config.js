@@ -1,14 +1,8 @@
 // eslint-disable-next-line import/no-unresolved
 import { createModuleFederationConfig } from '@module-federation/enhanced/rspack';
 
-/**
- * @typedef {import('@rspack/core').ModuleFederationPluginOptions} ModuleFederationPluginOptions
- */
-/**
- * @typedef {Object} MFConfigOptions
- * @property {string} name - The name of the module federation configuration.
- * @property {Object.<string, string>} [deps] - Dependencies with their versions.
- */
+/** @typedef {import('../types/index.d.ts').MFConfigOptions} MFConfigOptions */
+
 /**
  * Creates a module federation configuration.
  * @param {Partial<ModuleFederationPluginOptions>} config - Partial module federation configuration.

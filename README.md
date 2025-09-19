@@ -12,6 +12,22 @@ This package provides pre-configured Rspack configurations and utilities for bui
 npm install @front-utils/builder
 ```
 
+## TypeScript Support
+
+This package includes TypeScript type definitions. When using TypeScript, you'll get full type checking and IntelliSense support for all exported functions and interfaces.
+
+```typescript
+import { baseConfig, ConfigOptions } from '@front-utils/builder';
+
+const options: ConfigOptions = {
+  rootDir: process.cwd(),
+  env: { production: true },
+  appDirName: 'my-app',
+};
+
+const config = baseConfig(options); // Fully typed
+```
+
 ## Usage
 
 ### Basic Configuration

@@ -1,12 +1,13 @@
 import CompressionPlugin from 'compression-webpack-plugin';
-import rspack from '@rspack/core'; 
+import rspack from '@rspack/core';
 import ReactRefreshPlugin from '@rspack/plugin-react-refresh';
+
+/** @typedef {import('../types/index.d.ts').Env} Env */
 
 /**
  * Generates an array of Rspack plugins based on the environment.
- * @param {Object} env - The environment object.
- * @param {boolean} env.production - Indicates if the environment is production.
- * @returns {Array} An array of Rspack plugins.
+ * @param {Env} env - The environment object.
+ * @returns {Plugin[]} An array of Rspack plugins.
  */
 export const getPlugins = (env) => {
     const isProduction = env.production;

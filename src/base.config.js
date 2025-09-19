@@ -6,25 +6,12 @@ import { getPlugins } from './plugins.js';
 import { getRules } from './rules.js';
 import { getModuleGenerator, generateFileName } from './generator.js';
 
-/**
- * @typedef {Object} Env
- * @property {boolean} [production] - Indicates if the environment is production.
- * @property {boolean} [development] - Indicates if the environment is development.
- */
-
-/**
- * @typedef {Object} ConfigOptions
- * @property {string} rootDir - The root directory of the project.
- * @property {Env} env - The environment settings.
- * @property {string} appDirName - The name of the app directory.
- * @property {Object} [browserTargets] - Browser targets for CSS minimization.
- * @property {Object} [aliases] - Module aliases for resolve.
- * @property {string} [buildPath] - The build output path. Defaults to `${rootDir}/dist`.
- */
+/** @typedef {import('../types/index.d.ts').ConfigOptions} ConfigOptions */
+/** @typedef {import('../types/index.d.ts').Env} Env */
 
 /**
  * @param {ConfigOptions} options - The configuration options.
- * @returns {Object} The rspack configuration object.
+ * @returns {Configuration} The rspack configuration object.
  */
 export const baseConfig = ({
     rootDir, 

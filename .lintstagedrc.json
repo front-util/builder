@@ -1,8 +1,5 @@
 {
-    "*.{ts,tsx}": [
-        "bun run check-lint"
-    ],
-    "*.{tsx,ts}": [
-        "bash -c 'bun run check-types'"
+    "*.{js}": [
+        "bun run check:lint"
     ]
 }

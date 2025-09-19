@@ -1,6 +1,6 @@
 {
   "name": "@front-utils/builder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "build configuration",
   "author": "IVGolubev",
   "license": "ISC",
@@ -10,13 +10,16 @@
     "url": "https://github.com/front-util/builder"
   },
   "exports": {
-    ".": "./src/index.js"
+    ".": {
+      "types": "./types/index.d.ts",
+      "default": "./src/index.js"
+    }
   },
   "imports": {
     "#src/*": "./src/*"
   },
   "scripts": {
-    "check-lint": "eslint --max-warnings=0 --fix",
+    "check:lint": "eslint --max-warnings=0 --fix",
     "publish": "npm publish --access public"
   },
   "simple-git-hooks": {

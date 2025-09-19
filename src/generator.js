@@ -1,5 +1,7 @@
 import { ASSET_DIR_NAME } from './constants.js';
 
+/** @typedef {import('../types/index.d.ts').GenerateFileNameOptions} GenerateFileNameOptions */
+
 /**
  * Generates module generator options for CSS modules.
  * @returns {import('@rspack/core').GeneratorOptionsByModuleType} The generator options for CSS modules.
@@ -25,11 +27,7 @@ export const getModuleGenerator = () => {
 
 /**
  * Generates a filename for assets based on the provided options.
- * @param {Object} options - The options for filename generation.
- * @param {string} options.folder - The folder name for the asset.
- * @param {string} [options.ext] - The file extension.
- * @param {boolean} [options.hashed=true] - Whether to include content hash in the filename.
- * @param {string} options.appName - The application name.
+ * @param {GenerateFileNameOptions} options - The options for filename generation.
  * @returns {string|undefined} The generated filename or undefined in development.
  */
 export const generateFileName = ({
