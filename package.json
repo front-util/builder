@@ -1,6 +1,6 @@
 {
   "name": "@front-utils/builder",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "build configuration",
   "author": "IVGolubev",
   "license": "ISC",
@@ -10,16 +10,14 @@
     "url": "https://github.com/front-util/builder"
   },
   "exports": {
-    ".": "./dist/index.js"
+    ".": "./src/index.js"
   },
   "imports": {
     "#src/*": "./src/*"
   },
   "scripts": {
     "check-lint": "eslint --max-warnings=0 --fix",
-    "publish": "bun run build && npm publish --access public",
-    "build-lib": "bun build ./src/index.ts --outdir ./dist --target browser --minify --format esm",
-    "build": "rm -rf dist && bun run build-lib"
+    "publish": "npm publish --access public"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged --no-stash",
@@ -40,28 +38,37 @@
     "node": ">=18.0.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.13.0",
-    "@front-utils/linter": "^0.9.6",
-    "@types/bun": "^1.1.13",
-    "@types/eslint-plugin-jsx-a11y": "^6.9.0",
-    "@types/eslint__js": "^8.42.3",
-    "@types/node": "^22.9.1",
-    "bun": "^1.1.36",
-    "eslint": "^9.13.0",
+    "@eslint/js": "^9.35.0",
+    "@front-utils/linter": "^1.2.0",
+    "@module-federation/enhanced": "0.19.1",
+    "@types/bun": "^1.2.22",
+    "@types/eslint-plugin-jsx-a11y": "^6.10.0",
+    "@types/node": "^24.5.2",
+    "bun": "^1.2.22",
+    "compression-webpack-plugin": "11.1.0",
+    "eslint": "^9.35.0",
     "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-import-resolver-typescript": "^3.6.3",
-    "eslint-plugin-compat": "^6.0.1",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-compat": "^6.0.2",
     "eslint-plugin-filenames": "^1.3.2",
-    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-optimize-regex": "^1.2.1",
-    "eslint-plugin-promise": ">=6.0.0",
-    "eslint-plugin-sonarjs": "^1.0.4",
-    "globals": "^15.11.0",
-    "lint-staged": "^15.2.10",
-    "simple-git-hooks": "^2.11.1",
-    "typescript": "^5.6.3",
-    "typescript-eslint": ">=8.0.0"
+    "eslint-plugin-promise": ">=7.2.1",
+    "eslint-plugin-sonarjs": "^3.0.5",
+    "globals": "^16.4.0",
+    "lint-staged": "^16.1.6",
+    "simple-git-hooks": "^2.13.1",
+    "typescript": "^5.9.2",
+    "typescript-eslint": ">=8.44.0"
   },
-  "peerDependencies": {}
+  "peerDependencies": {
+    "@rspack/core": "^1.5.x",
+    "@rspack/cli": "^1.5.x",
+    "@rspack/plugin-react-refresh": "^1.5.1"
+  },
+  "optionalDependencies": {
+    "@module-federation/enhanced": "*",
+    "compression-webpack-plugin": "*"
+  }
 }

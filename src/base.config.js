@@ -2,10 +2,8 @@ import path from 'path';
 import { rspack } from '@rspack/core';
 import { defineConfig } from '@rspack/cli';
 
-import { fullWebpackAliases } from '../aliases.js';
 import { getPlugins } from './plugins.js';
 import { getRules } from './rules.js';
-import { BASE_BUILD_PATH, browserTargets } from './constants.js';
 import { getModuleGenerator, generateFileName } from './generator.js';
 
 /**
@@ -15,9 +13,27 @@ import { getModuleGenerator, generateFileName } from './generator.js';
  */
 
 /**
- * @param {{ rootDir: string, env: Env, appDirName: string }} options - The options object containing rootDir, env, and appDirName.
+ * @typedef {Object} ConfigOptions
+ * @property {string} rootDir - The root directory of the project.
+ * @property {Env} env - The environment settings.
+ * @property {string} appDirName - The name of the app directory.
+ * @property {Object} [browserTargets] - Browser targets for CSS minimization.
+ * @property {Object} [aliases] - Module aliases for resolve.
+ * @property {string} [buildPath] - The build output path. Defaults to `${rootDir}/dist`.
  */
-export default ({ rootDir, env, appDirName, }) => {
+
+/**
+ * @param {ConfigOptions} options - The configuration options.
+ * @returns {Object} The rspack configuration object.
+ */
+export const baseConfig = ({
+    rootDir, 
+    env, 
+    appDirName, 
+    browserTargets,
+    aliases,
+    buildPath = `${rootDir}/dist`,
+}) => {
     const isProduction = env.production;
     const plugins = getPlugins(env);
     const rules = getRules(env, appDirName);
@@ -30,8 +46,7 @@ export default ({ rootDir, env, appDirName, }) => {
         entry          : path.resolve(rootDir, 'src', 'index'),
         output         : {
             uniqueName      : appDirName,
-            path            : `${BASE_BUILD_PATH}/${appDirName}`,
-            // publicPath      : isProduction ? `FRONT_ENDPOINT/${appDirName}/` : 'auto',
+            path            : buildPath,
             publicPath      : 'auto',
             clean           : true,
             filename        : generateFileName({folder: 'js', ext: '.js', appName: appDirName, hashed: true,}),
@@ -53,14 +68,16 @@ export default ({ rootDir, env, appDirName, }) => {
                 minimizer: [
                     new rspack.SwcJsMinimizerRspackPlugin(),
                     new rspack.LightningCssMinimizerRspackPlugin({
-                        targets: browserTargets,
+                        ...browserTargets && {
+                            targets: browserTargets,
+                        },
                     })
                 ],
             },
         },
         resolve: {
             extensions: ['.tsx', '.ts', '.jsx', '.js'],
-            alias     : fullWebpackAliases,
+            alias     : aliases,
             tsConfig  : path.resolve(rootDir, './tsconfig.json'),
         },
         module: {

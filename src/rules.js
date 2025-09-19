@@ -1,8 +1,26 @@
-import { browserTargets } from './constants.js';
-
 import { generateFileName } from './generator.js';
 
-export const getRules = (env, appName) => {
+/**
+ * Converts browser targets object to an array of target strings for SWC.
+ * @param {Object} [browserTargets] - Object with browser names as keys and minimum versions as values.
+ * @returns {string[]} Array of target strings in the format 'browser >= version'.
+ */
+export const convertBrowserTargetsToSwcTargets = (browserTargets) => {
+    if(!browserTargets || Object.keys(browserTargets).length === 0) {
+        return ['chrome >= 84', 'safari >= 14.1'];
+    }
+    return Object.entries(browserTargets).map(([browser, version]) => `${browser} >= ${version}`);
+};
+
+/**
+ * Generates an array of Rspack rules based on the environment and options.
+ * @param {Object} env - The environment object.
+ * @param {boolean} env.production - Indicates if the environment is production.
+ * @param {string} appName - The application name.
+ * @param {Object} [browserTargets] - Browser targets for SWC and CSS loaders.
+ * @returns {Array} An array of Rspack rules.
+ */
+export const getRules = (env, appName, browserTargets) => {
     const isProduction = env.production;
 
     return [
@@ -15,10 +33,7 @@ export const getRules = (env, appName) => {
                     env: {
                         mode   : 'usage',
                         coreJs : '3.38.1',
-                        targets: [
-                            'chrome >= 84',
-                            'safari >= 14.1'
-                        ],
+                        targets: convertBrowserTargetsToSwcTargets(browserTargets),
                     },
                     isModule: 'unknown',
                     jsc     : {
@@ -108,9 +123,11 @@ export const getRules = (env, appName) => {
             test: /\.css$/,
             use : [
                 {
-                    loader : 'builtin:lightningcss-loader',
-                    /** @type {import('@rspack/core').LightningcssLoaderOptions} */
-                    options: browserTargets,
+                    loader: 'builtin:lightningcss-loader',
+                    ...browserTargets && {
+                        /** @type {import('@rspack/core').LightningcssLoaderOptions} */
+                        options: browserTargets,
+                    },
                 }
             ],
         },

@@ -2,6 +2,12 @@ import CompressionPlugin from 'compression-webpack-plugin';
 import rspack from '@rspack/core'; 
 import ReactRefreshPlugin from '@rspack/plugin-react-refresh';
 
+/**
+ * Generates an array of Rspack plugins based on the environment.
+ * @param {Object} env - The environment object.
+ * @param {boolean} env.production - Indicates if the environment is production.
+ * @returns {Array} An array of Rspack plugins.
+ */
 export const getPlugins = (env) => {
     const isProduction = env.production;
     const appName = process.env.npm_package_name;
@@ -23,7 +29,7 @@ export const getPlugins = (env) => {
                 <!DOCTYPE html>
                 <html lang="ru">
                     <head>
-                        <title>Геймификация ${appName}</title>
+                        <title>${appName}</title>
                         <meta charset="utf-8">
                     </head>
                     <body>
