@@ -1,6 +1,6 @@
 {
   "name": "@front-utils/builder",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "build configuration",
   "author": "IVGolubev",
   "license": "ISC",
@@ -63,7 +63,8 @@
     "lint-staged": "^16.1.6",
     "simple-git-hooks": "^2.13.1",
     "typescript": "^5.9.2",
-    "typescript-eslint": ">=8.44.0"
+    "typescript-eslint": ">=8.44.0",
+    "webpack-merge": "^6.0.1"
   },
   "peerDependencies": {
     "@rspack/core": "^1.5.x",

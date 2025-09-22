@@ -1,6 +1,7 @@
 import path from 'path';
 import { rspack } from '@rspack/core';
 import { defineConfig } from '@rspack/cli';
+import { merge } from 'webpack-merge';
 
 import { getPlugins } from './plugins.js';
 import { getRules } from './rules.js';
@@ -76,4 +77,14 @@ export const baseConfig = ({
             css: true,
         },
     });
+};
+
+/**
+ * Creates a merged Rspack configuration by combining base config with custom config.
+ * @param {ConfigOptions} params - The base configuration parameters.
+ * @param {Partial<Configuration>} config - Additional configuration to merge.
+ * @returns {Configuration} The merged Rspack configuration.
+ */
+export const createConfig = (params, config) => {
+    return merge(baseConfig(params), config);
 };

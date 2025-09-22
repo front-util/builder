@@ -30,6 +30,7 @@ export const ASSET_DIR_NAME: string;
 export const LIBS_PATH: string;
 
 export function baseConfig(options: ConfigOptions): Configuration;
+export function createConfig(params: ConfigOptions, config: Partial<Configuration>): Configuration;
 export function createMFConfig(config: Partial<ModuleFederationPluginOptions>, options: MFConfigOptions): ModuleFederationPluginOptions;
 export function getRules(env: Env, appName: string, browserTargets?: Record<string, number>): RuleSetRule[];
 export function getPlugins(env: Env): Plugin[];

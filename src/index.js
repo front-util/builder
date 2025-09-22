@@ -1,4 +1,4 @@
-export {baseConfig,} from './base.config.js';
+export {baseConfig, createConfig,} from './base.config.js';
 export {createMFConfig,} from './mf.config.js';
 export {createDevServer,} from './devserver.js';
 export * from './constants.js';

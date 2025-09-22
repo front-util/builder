@@ -49,6 +49,26 @@ export default baseConfig({
 });
 ```
 
+### Custom Configuration with Merging
+
+```javascript
+import { createConfig } from '@front-utils/builder';
+
+export default createConfig({
+  rootDir: process.cwd(),
+  env: { production: process.env.NODE_ENV === 'production' },
+  appDirName: 'my-app',
+}, {
+  devServer: {
+    port: 3000,
+    hot: true,
+  },
+  plugins: [
+    // Additional custom plugins
+  ],
+});
+```
+
 ### Module Federation
 
 ```javascript
@@ -108,6 +128,14 @@ Generates a complete Rspack configuration.
 - `options.browserTargets` (object, optional): Browser compatibility targets.
 - `options.aliases` (object, optional): Module resolution aliases.
 - `options.buildPath` (string, optional): Output build path.
+
+### createConfig(params, config)
+
+Creates a merged Rspack configuration by combining base config with custom config.
+
+- `params` (ConfigOptions): The base configuration parameters.
+- `config` (object): Additional configuration to merge with the base config.
+- Returns: Merged Rspack configuration object.
 
 ### createMFConfig(config, options)
 
