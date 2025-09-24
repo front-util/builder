@@ -14,12 +14,10 @@ export const getPlugins = (env) => {
     const appName = process.env.npm_package_name;
     const plugins = [
         new rspack.DefinePlugin({
-            'process.env': JSON.stringify({
-                RELEASE_VERSION: process.env.npm_package_version,
-                BUILDTIME      : new Date().toLocaleString(),
-                APP_NAME       : appName,
-                NODE_ENV       : process.env.NODE_ENV,
-            }),
+            'process.env.RELEASE_VERSION': JSON.stringify(process.env.npm_package_version),
+            'process.env.BUILDTIME'      : JSON.stringify(new Date().toLocaleString()),
+            'process.env.APP_NAME'       : JSON.stringify(appName),
+            'process.env.NODE_ENV'       : JSON.stringify(process.env.NODE_ENV),
         }),
         new rspack.HtmlRspackPlugin({
             hash: true,
