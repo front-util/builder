@@ -7,9 +7,10 @@ import ReactRefreshPlugin from '@rspack/plugin-react-refresh';
 /**
  * Generates an array of Rspack plugins based on the environment.
  * @param {Env} env - The environment object.
+ * @param {boolean} [overlay=true] - Whether to show overlay for React Refresh.
  * @returns {Plugin[]} An array of Rspack plugins.
  */
-export const getPlugins = (env) => {
+export const getPlugins = (env, overlay = true) => {
     const isProduction = env.production;
     const appName = process.env.npm_package_name;
     const plugins = [
@@ -53,7 +54,7 @@ export const getPlugins = (env) => {
     } else {
         plugins.push(...[
             new ReactRefreshPlugin({
-                overlay: true,
+                overlay: overlay,
             }),
             new rspack.HotModuleReplacementPlugin()
         ]);

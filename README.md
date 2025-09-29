@@ -128,6 +128,7 @@ Generates a complete Rspack configuration.
 - `options.browserTargets` (object, optional): Browser compatibility targets.
 - `options.aliases` (object, optional): Module resolution aliases.
 - `options.buildPath` (string, optional): Output build path.
+- `options.overlay` (boolean, optional): Whether to show overlay for React Refresh in development (default: true).
 
 ### createConfig(params, config)
 
@@ -152,11 +153,12 @@ Returns an array of Rspack rules.
 - `appName` (string): Application name.
 - `browserTargets` (object, optional): Browser targets.
 
-### getPlugins(env)
+### getPlugins(env, overlay)
 
 Returns an array of Rspack plugins.
 
 - `env` (object): Environment with `production` boolean.
+- `overlay` (boolean, optional): Whether to show overlay for React Refresh in development (default: true).
 
 ### generateFileName(options)
 

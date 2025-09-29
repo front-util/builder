@@ -13,6 +13,7 @@ export interface ConfigOptions {
   browserTargets?: Record<string, number>;
   aliases?: Record<string, string>;
   buildPath?: string;
+  overlay?: boolean;
 }
 
 export interface MFConfigOptions {
@@ -34,7 +35,7 @@ export function baseConfig(options: ConfigOptions): Configuration;
 export function createConfig(params: ConfigOptions, config: Partial<Configuration>): Configuration;
 export function createMFConfig(config: Partial<ModuleFederationPluginOptions>, options: MFConfigOptions): ModuleFederationPluginOptions;
 export function getRules(env: Env, appName: string, browserTargets?: Record<string, number>): RuleSetRule[];
-export function getPlugins(env: Env): Plugin[];
+export function getPlugins(env: Env, overlay?: boolean): Plugin[];
 export function generateFileName(options: GenerateFileNameOptions): string | undefined;
 export function getModuleGenerator(): GeneratorOptionsByModuleType;
 export function convertBrowserTargetsToSwcTargets(browserTargets?: Record<string, number>): string[];

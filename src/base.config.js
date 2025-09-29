@@ -15,15 +15,16 @@ import { getModuleGenerator, generateFileName } from './generator.js';
  * @returns {Configuration} The rspack configuration object.
  */
 export const baseConfig = ({
-    rootDir, 
-    env, 
-    appDirName, 
+    rootDir,
+    env,
+    appDirName,
     browserTargets,
     aliases,
     buildPath = `${rootDir}/dist`,
+    overlay = true,
 }) => {
     const isProduction = env.production;
-    const plugins = getPlugins(env);
+    const plugins = getPlugins(env, overlay);
     const rules = getRules(env, appDirName);
     const generator = getModuleGenerator(env);
 
