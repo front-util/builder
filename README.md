@@ -178,6 +178,13 @@ Converts browser targets object to SWC target strings.
 - `browserTargets` (object, optional): Object with browser names as keys and versions as values.
 - Returns: Array of strings like `['chrome >= 83', 'safari >= 14']`.
 
+### retryPlugin(options)
+
+Creates a retry plugin for module federation with optional custom options.
+
+- `options` (RetryPluginOptions, optional): Configuration options for the retry plugin, such as retryDelay, retryTimes, onRetry, onSuccess, onError.
+- Returns: Configured RetryPlugin instance for handling retries in module federation.
+
 ## Peer Dependencies
 
 - `@rspack/core`: ^1.5.x

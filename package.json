@@ -1,6 +1,6 @@
 {
   "name": "@front-utils/builder",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "build configuration",
   "author": "IVGolubev",
   "license": "ISC",
@@ -44,6 +44,7 @@
     "@eslint/js": "^9.35.0",
     "@front-utils/linter": "^1.2.0",
     "@module-federation/enhanced": "0.19.1",
+    "@module-federation/retry-plugin": "^0.19.1",
     "@types/bun": "^1.2.22",
     "@types/eslint-plugin-jsx-a11y": "^6.10.0",
     "@types/node": "^24.5.2",
@@ -67,12 +68,13 @@
     "webpack-merge": "^6.0.1"
   },
   "peerDependencies": {
-    "@rspack/core": "^1.5.x",
     "@rspack/cli": "^1.5.x",
+    "@rspack/core": "^1.5.x",
     "@rspack/plugin-react-refresh": "^1.5.1"
   },
   "optionalDependencies": {
     "@module-federation/enhanced": "*",
+    "@module-federation/retry-plugin": "*",
     "compression-webpack-plugin": "*"
   }
 }

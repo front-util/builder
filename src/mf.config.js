@@ -1,5 +1,9 @@
 // eslint-disable-next-line import/no-unresolved
 import { createModuleFederationConfig } from '@module-federation/enhanced/rspack';
+import path, {dirname} from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 /** @typedef {import('../types/index.d.ts').MFConfigOptions} MFConfigOptions */
 
@@ -10,9 +14,12 @@ import { createModuleFederationConfig } from '@module-federation/enhanced/rspack
  * @returns {ModuleFederationPluginOptions} - Complete module federation configuration.
  */
 export const createMFConfig = (config, options) => createModuleFederationConfig({
-    name    : options.name,
-    filename: 'remoteEntry.js',
-    dts     : false,
-    dev     : process.env.NODE_ENV !== 'production',
+    name          : options.name,
+    filename      : 'remoteEntry.js',
+    dts           : false,
+    dev           : process.env.NODE_ENV !== 'production',
+    runtimePlugins: [
+        path.resolve(__dirname, './mf.retry-plugin.js')
+    ],
     ...config,
 });

@@ -1,4 +1,5 @@
 import type { Configuration, RuleSetRule, Plugin, GeneratorOptionsByModuleType, ModuleFederationPluginOptions, DevServer } from '@rspack/core';
+import type { CommonRetryOptions } from '@module-federation/retry-plugin';
 
 export interface Env {
   production?: boolean;
@@ -42,3 +43,7 @@ export function convertBrowserTargetsToSwcTargets(browserTargets?: Record<string
 export interface DevServerOptions extends Partial<DevServer> {}
 
 export function createDevServer(port: number, config?: DevServerOptions): DevServer;
+
+export type RetryPluginOptions = CommonRetryOptions;
+
+export function retryPlugin(options?: RetryPluginOptions): any;

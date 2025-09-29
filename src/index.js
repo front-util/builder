@@ -5,3 +5,4 @@ export * from './constants.js';
 export {generateFileName, getModuleGenerator,} from './generator.js';
 export {getPlugins,} from './plugins.js';
 export {getRules, convertBrowserTargetsToSwcTargets,} from './rules.js';
+export {retryPlugin,} from './mf.retry-plugin.js';
