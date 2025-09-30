@@ -19,6 +19,7 @@ export interface ConfigOptions {
 export interface MFConfigOptions {
   name: string;
   deps?: Record<string, string>;
+  retry?: boolean;
 }
 
 export interface GenerateFileNameOptions {
@@ -44,7 +45,3 @@ export function convertBrowserTargetsToSwcTargets(browserTargets?: Record<string
 export interface DevServerOptions extends Partial<DevServer> {}
 
 export function createDevServer(port: number, config?: DevServerOptions): DevServer;
-
-export type RetryPluginOptions = CommonRetryOptions;
-
-export function retryPlugin(options?: RetryPluginOptions): any;

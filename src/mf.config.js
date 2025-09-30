@@ -14,12 +14,14 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
  * @returns {ModuleFederationPluginOptions} - Complete module federation configuration.
  */
 export const createMFConfig = (config, options) => createModuleFederationConfig({
-    name          : options.name,
-    filename      : 'remoteEntry.js',
-    dts           : false,
-    dev           : process.env.NODE_ENV !== 'production',
-    runtimePlugins: [
-        path.resolve(__dirname, './mf.retry-plugin.js')
-    ],
+    name    : options.name,
+    filename: 'remoteEntry.js',
+    dts     : false,
+    dev     : process.env.NODE_ENV !== 'production',
+    ...(options.retry && {
+        runtimePlugins: [
+            path.resolve(__dirname, './mf.retry-plugin.js')
+        ],
+    }),
     ...config,
 });
