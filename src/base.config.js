@@ -1,11 +1,11 @@
-import path from 'path';
-import { rspack } from '@rspack/core';
 import { defineConfig } from '@rspack/cli';
+import { rspack } from '@rspack/core';
+import path from 'node:path';
 import { merge } from 'webpack-merge';
 
+import { generateFileName, getModuleGenerator } from './generator.js';
 import { getPlugins } from './plugins.js';
 import { getRules } from './rules.js';
-import { getModuleGenerator, generateFileName } from './generator.js';
 
 /** @typedef {import('../types/index.d.ts').ConfigOptions} ConfigOptions */
 /** @typedef {import('../types/index.d.ts').Env} Env */
@@ -47,12 +47,28 @@ export const baseConfig = ({
         devtool: isProduction ? 'source-map' : 'eval',
         ...isProduction && {
             optimization: {
-                minimize   : true,
-                splitChunks: {
-                    maxSize           : 120000,
-                    minSize           : 20000,
-                    chunks            : 'async',
+                minimize              : true,
+                removeAvailableModules: true,
+                splitChunks           : {
+                    maxSize           : 120_000,
+                    maxAsyncSize      : 120_000,
+                    minSize           : 40_000,
+                    chunks            : 'all',
                     maxInitialRequests: 30,
+                    maxAsyncRequests  : 30,
+                    cacheGroups       : {
+                        defaultVendors: {
+                            test              : /[\\/]node_modules[\\/]/,
+                            priority          : -10,
+                            reuseExistingChunk: true,
+                            filename          : `assets/js/${appDirName}-libs-[name].js`,
+                        },
+                        default: {
+                            minChunks         : 2,
+                            priority          : -20,
+                            reuseExistingChunk: true,
+                        },
+                    },
                 },
                 minimizer: [
                     new rspack.SwcJsMinimizerRspackPlugin(),
@@ -66,8 +82,11 @@ export const baseConfig = ({
         },
         resolve: {
             extensions: ['.tsx', '.ts', '.jsx', '.js'],
-            alias     : aliases,
-            tsConfig  : path.resolve(rootDir, './tsconfig.json'),
+            alias     : {
+                'react/jsx-runtime': 'react/jsx-runtime.js',
+                ...aliases,
+            },
+            tsConfig: path.resolve(rootDir, './tsconfig.json'),
         },
         module: {
             rules,
@@ -75,7 +94,8 @@ export const baseConfig = ({
         },
         plugins,
         experiments: {
-            css: true,
+            css                  : true,
+            parallelCodeSplitting: true,
         },
     });
 };
@@ -86,6 +106,4 @@ export const baseConfig = ({
  * @param {Partial<Configuration>} config - Additional configuration to merge.
  * @returns {Configuration} The merged Rspack configuration.
  */
-export const createConfig = (params, config) => {
-    return merge(baseConfig(params), config);
-};
+export const createConfig = (params, config) => merge(baseConfig(params), config);

@@ -1,6 +1,6 @@
 {
   "name": "@front-utils/builder",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "build configuration",
   "author": "IVGolubev",
   "license": "ISC",
@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.35.0",
-    "@front-utils/linter": "^1.2.0",
+    "@front-utils/linter": "^1.3.0",
     "@module-federation/enhanced": "0.19.1",
     "@module-federation/retry-plugin": "^0.19.1",
     "@types/bun": "^1.2.22",
@@ -58,8 +58,10 @@
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-optimize-regex": "^1.2.1",
+    "eslint-plugin-perfectionist": "^4.15.1",
     "eslint-plugin-promise": ">=7.2.1",
     "eslint-plugin-sonarjs": "^3.0.5",
+    "eslint-plugin-unicorn": "^62.0.0",
     "globals": "^16.4.0",
     "lint-staged": "^16.1.6",
     "simple-git-hooks": "^2.13.1",

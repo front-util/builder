@@ -51,36 +51,9 @@ export const getRules = (env, appName, browserTargets) => {
                                 pragmaFrag : "React.Fragment",
                             },
                         },
-                        experimental: {
-                            plugins: [
-                                [
-                                    "@swc/plugin-styled-components",
-                                    {
-                                        displayName: !isProduction,
-                                        ssr        : false,
-                                        pure       : isProduction,
-                                        namespace  : 'game',
-                                        minify     : !isProduction,
-                                    }
-
-                                ]
-                            ],
-                        },
                         minify: {
                             compress: isProduction,
                         },
-                    },
-                    rspackExperiments: {
-                        import: [
-                            {
-                                libraryName: '@mui/material',
-                                customName : '@mui/material/{{ member }}',
-                            },
-                            {
-                                libraryName: '@mui/icons-material',
-                                customName : '@mui/icons-material/{{ member }}',
-                            }
-                        ],
                     },
                 },
             },
