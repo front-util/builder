@@ -20,7 +20,7 @@
   },
   "scripts": {
     "check:lint": "eslint --max-warnings=0 --fix",
-    "publish": "npm publish --access public"
+    "publish:lib": "npm publish --access public"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged --no-stash",
