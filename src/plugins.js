@@ -1,6 +1,6 @@
-import CompressionPlugin from 'compression-webpack-plugin';
 import rspack from '@rspack/core';
 import ReactRefreshPlugin from '@rspack/plugin-react-refresh';
+import CompressionPlugin from 'compression-webpack-plugin';
 
 /** @typedef {import('../types/index.d.ts').Env} Env */
 
@@ -52,12 +52,12 @@ export const getPlugins = (env, overlay = true) => {
             algorithm: 'gzip',
         }));
     } else {
-        plugins.push(...[
+        plugins.push(
             new ReactRefreshPlugin({
-                overlay: overlay,
+                overlay,
             }),
             new rspack.HotModuleReplacementPlugin()
-        ]);
+        );
     }
 
     return plugins;

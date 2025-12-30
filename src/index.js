@@ -4,4 +4,4 @@ export {createDevServer,} from './devserver.js';
 export * from './constants.js';
 export {generateFileName, getModuleGenerator,} from './generator.js';
 export {getPlugins,} from './plugins.js';
-export {getRules, convertBrowserTargetsToSwcTargets,} from './rules.js';
+export {convertBrowserTargetsToSwcTargets, getRules,} from './rules.js';

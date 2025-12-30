@@ -94,7 +94,7 @@ export const getRules = (env, appName, browserTargets) => {
             },
         },
         {
-            test: /\.css$/,
+            test: /\.module\.css$/,
             use : [
                 {
                     loader: 'builtin:lightningcss-loader',
