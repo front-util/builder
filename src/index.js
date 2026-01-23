@@ -5,3 +5,4 @@ export * from './constants.js';
 export {generateFileName, getModuleGenerator,} from './generator.js';
 export {getPlugins,} from './plugins.js';
 export {convertBrowserTargetsToSwcTargets, getRules,} from './rules.js';
+export {getSplitChunksSettings,} from './splitchunks.js';

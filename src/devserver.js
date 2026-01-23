@@ -10,7 +10,8 @@ export const createDevServer = (port, config) => ({
     port,
     client: {
         progress: true,
-        logging : 'info',
+        logging : 'verbose',
+        overlay : false,
     },
     headers: {
         'Access-Control-Allow-Origin' : '*',

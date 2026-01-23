@@ -67,31 +67,9 @@ export const getRules = (env, appName, browserTargets) => {
             },
         },
         {
-            test: /\.svg$/,
-            use : [
-                {
-                    loader : '@svgr/webpack',
-                    options: {
-                        prettier  : false,
-                        svgo      : false,
-                        svgoConfig: {
-                            plugins: [{ removeViewBox: false, }],
-                        },
-                        titleProp: true,
-                        ref      : true,
-                    },
-                },
-                {
-                    loader : 'file-loader',
-                    options: {
-                        name: generateFileName({folder: 'icons', ext: '.[ext]', appName,}),
-                    },
-
-                }
-            ],
-            issuer: {
-                and: [/\.(ts|tsx|js|jsx|md|mdx)$/],
-            },
+            test  : /\.svg$/i,
+            issuer: /\.[jt]sx?$/,
+            use   : ['@svgr/webpack', 'url-loader'],
         },
         {
             test: /\.module\.css$/,

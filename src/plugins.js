@@ -1,3 +1,4 @@
+import { RsdoctorRspackPlugin } from '@rsdoctor/rspack-plugin';
 import rspack from '@rspack/core';
 import ReactRefreshPlugin from '@rspack/plugin-react-refresh';
 import CompressionPlugin from 'compression-webpack-plugin';
@@ -47,6 +48,9 @@ export const getPlugins = (env, overlay = true) => {
         })
     ];
 
+    if(process.env.RSDOCTOR) {
+        plugins.push(new RsdoctorRspackPlugin());
+    }
     if(isProduction) {
         plugins.push(new CompressionPlugin({
             algorithm: 'gzip',
