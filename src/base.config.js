@@ -73,8 +73,7 @@ export const baseConfig = ({
         },
         plugins,
         experiments: {
-            css                  : true,
-            parallelCodeSplitting: true,
+            css: true,
         },
     });
 };

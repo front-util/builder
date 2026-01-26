@@ -1,7 +1,7 @@
 export const getSplitChunksSettings = (appDirName) => ({
-    maxSize           : 120_000,
-    maxAsyncSize      : 120_000,
-    minSize           : 40_000,
+    maxSize           : 200_000,
+    maxAsyncSize      : 200_000,
+    minSize           : 100_000,
     chunks            : 'all',
     maxInitialRequests: 30,
     maxAsyncRequests  : 30,
