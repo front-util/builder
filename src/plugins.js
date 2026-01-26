@@ -4,6 +4,7 @@ import ReactRefreshPlugin from '@rspack/plugin-react-refresh';
 import CompressionPlugin from 'compression-webpack-plugin';
 
 /** @typedef {import('../types/index.d.ts').Env} Env */
+/** @typedef {import('@rspack/core').Plugin} Plugin */
 
 /**
  * Generates an array of Rspack plugins based on the environment.

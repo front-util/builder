@@ -1,3 +1,8 @@
+/**
+ * Generates split chunks settings for Rspack optimization.
+ * @param {string} appDirName - The application directory name.
+ * @returns {import('@rspack/core').OptimizationSplitChunksOptions} The split chunks configuration.
+ */
 export const getSplitChunksSettings = (appDirName) => ({
     maxSize           : 200_000,
     maxAsyncSize      : 200_000,

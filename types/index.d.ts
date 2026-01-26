@@ -13,6 +13,7 @@ export interface ConfigOptions {
   aliases?: Record<string, string>;
   buildPath?: string;
   overlay?: boolean;
+  useSplitChunks?: boolean;
 }
 
 export interface MFConfigOptions {

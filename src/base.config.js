@@ -1,3 +1,4 @@
+// @ts-check
 import { defineConfig } from '@rspack/cli';
 import { rspack } from '@rspack/core';
 import path from 'node:path';
@@ -6,9 +7,11 @@ import { merge } from 'webpack-merge';
 import { generateFileName, getModuleGenerator } from './generator.js';
 import { getPlugins } from './plugins.js';
 import { getRules } from './rules.js';
+import { getSplitChunksSettings } from './splitchunks.js';
 
 /** @typedef {import('../types/index.d.ts').ConfigOptions} ConfigOptions */
 /** @typedef {import('../types/index.d.ts').Env} Env */
+/** @typedef {import('@rspack/core').Configuration} Configuration */
 
 /**
  * @param {ConfigOptions} options - The configuration options.
@@ -21,12 +24,13 @@ export const baseConfig = ({
     browserTargets,
     aliases,
     buildPath = `${rootDir}/dist`,
-    overlay = true,
+    overlay = false,
+    useSplitChunks = true,
 }) => {
     const isProduction = env.production;
     const plugins = getPlugins(env, overlay);
-    const rules = getRules(env, appDirName);
-    const generator = getModuleGenerator(env);
+    const rules = getRules(env, appDirName, browserTargets);
+    const generator = getModuleGenerator();
 
     return defineConfig({
         context        : rootDir,
@@ -51,12 +55,11 @@ export const baseConfig = ({
                 removeAvailableModules: true,
                 minimizer             : [
                     new rspack.SwcJsMinimizerRspackPlugin(),
-                    new rspack.LightningCssMinimizerRspackPlugin({
-                        ...browserTargets && {
-                            targets: browserTargets,
-                        },
-                    })
+                    new rspack.LightningCssMinimizerRspackPlugin()
                 ],
+                ...(useSplitChunks && {
+                    splitChunks: getSplitChunksSettings(appDirName),
+                }),
             },
         },
         resolve: {
