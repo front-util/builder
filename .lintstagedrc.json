@@ -1,5 +1,8 @@
 {
-    "*.{js}": [
+    "src/**/*.js": [
         "npm run check:lint"
+    ],
+    "example/**/*.{js,ts,tsx}": [
+        "sh scripts/lint-example.sh"
     ]
 }
