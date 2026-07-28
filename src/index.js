@@ -1,8 +1,8 @@
-export {baseConfig, createConfig,} from './base.config.js';
-export {createMFConfig,} from './mf.config.js';
-export {createDevServer,} from './devserver.js';
+export { baseConfig, createConfig, } from './base.config.js';
+export { createMFConfig, } from './mf.config.js';
+export { createDevServer, } from './devserver.js';
 export * from './constants.js';
-export {generateFileName, getModuleGenerator,} from './generator.js';
-export {getPlugins,} from './plugins.js';
-export {convertBrowserTargetsToSwcTargets, getRules,} from './rules.js';
-export {getSplitChunksSettings,} from './splitchunks.js';
+export { generateFileName, getModuleGenerator, } from './generator.js';
+export { getPlugins, } from './plugins.js';
+export { convertBrowserTargetsToSwcTargets, getRules, } from './rules.js';
+export { getSplitChunksSettings, } from './splitchunks.js';
