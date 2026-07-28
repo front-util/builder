@@ -1,0 +1,22 @@
+{
+  "name": "example",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "packageManager": "npm@11.16.0",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "check:lint": "turbo check:lint"
+  },
+  "overrides": {
+    "eslint-plugin-import": "npm:eslint-plugin-import-x@^4.17.1",
+    "eslint-plugin-jsx-a11y": {
+      "eslint": "^10.8.0"
+    }
+  },
+  "devDependencies": {
+    "turbo": "^2.5.0"
+  }
+}
