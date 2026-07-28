@@ -12,6 +12,7 @@ import CompressionPlugin from 'compression-webpack-plugin';
  * @param {boolean} [overlay=true] - Whether to show overlay for React Refresh.
  * @returns {Plugin[]} An array of Rspack plugins.
  */
+// eslint-disable-next-line unicorn/consistent-boolean-name
 export const getPlugins = (env, overlay = true) => {
     const isProduction = env.production;
     const appName = process.env.npm_package_name;
@@ -56,7 +57,8 @@ export const getPlugins = (env, overlay = true) => {
         plugins.push(new CompressionPlugin({
             algorithm: 'gzip',
         }));
-    } else {
+    }
+    else {
         plugins.push(
             new ReactRefreshPlugin({
                 overlay,

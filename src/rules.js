@@ -47,8 +47,8 @@ export const getRules = (env, appName, browserTargets) => {
                                 runtime    : 'automatic',
                                 development: !isProduction,
                                 refresh    : !isProduction,
-                                pragma     : "React.createElement",
-                                pragmaFrag : "React.Fragment",
+                                pragma     : 'React.createElement',
+                                pragmaFrag : 'React.Fragment',
                             },
                         },
                         minify: {
@@ -63,7 +63,7 @@ export const getRules = (env, appName, browserTargets) => {
             test     : /\.(jpe?g|png|gif|webp)$/,
             type     : 'asset/resource',
             generator: {
-                filename: generateFileName({folder: 'images', appName,}),
+                filename: generateFileName({ folder: 'images', appName, }),
             },
         },
         {
@@ -85,14 +85,16 @@ export const getRules = (env, appName, browserTargets) => {
         },
         {
             test: /\.(woff2|woff|otf|ttf|eot)?$/,
-            ...isProduction ? {
-                type     : 'asset/resource',
-                generator: {
-                    filename: generateFileName({folder: 'fonts', hashed: false, appName,}),
+            ...isProduction
+                ? {
+                    type     : 'asset/resource',
+                    generator: {
+                        filename: generateFileName({ folder: 'fonts', hashed: false, appName, }),
+                    },
+                }
+                : {
+                    type: 'asset/inline',
                 },
-            } : {
-                type: 'asset/inline',
-            },
         }
     ];
 };

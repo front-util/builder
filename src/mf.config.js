@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-unresolved
 import { createModuleFederationConfig } from '@module-federation/enhanced/rspack';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';

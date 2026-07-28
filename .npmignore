@@ -7,7 +7,7 @@
 
 .gitignore
 lintstagedrc.json
-bun.lockb
+
 eslint.config.js
 .lintstagedrc.json
 tsconfig.json
