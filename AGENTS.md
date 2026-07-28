@@ -4,11 +4,11 @@ Rspack configuration builder library. Pure ESM (`"type": "module"`), published a
 
 ## Commands
 
-- **Lint**: `bun run check:lint` — runs `eslint --max-warnings=0 --fix` on `src/**/*.js`
-- **Publish**: `bun run publish:lib` — `npm publish --access public`
+- **Lint**: `npm run check:lint` — runs `eslint --max-warnings=0 --fix` on `src/**/*.js`
+- **Publish**: `npm run publish:lib` — `npm publish --access public`
 - **No test suite** in this repo.
 
-Pre-commit hook uses `lint-staged` → `bun run check:lint` on `*.js` files (via `simple-git-hooks`).
+Pre-commit hook uses `lint-staged` → `npm run check:lint` on `*.js` files (via `simple-git-hooks`).
 
 ## Structure
 
@@ -22,6 +22,6 @@ Pre-commit hook uses `lint-staged` → `bun run check:lint` on `*.js` files (via
 - No TypeScript source — JS with JSDoc `@typedef` + hand-written `.d.ts`. Keep `types/index.d.ts` in sync when changing exports.
 - Linter enforces `--max-warnings=0`. Fix all warnings, not just errors.
 - ESLint config only covers `./src/**/*.js`.
-- Bun is the package manager (`bun.lockb` present). Use `bun` commands, not `npm`/`yarn`, for local dev.
+- `npm` is the package manager. Use `npm` commands for local dev.
 - `webpack-merge` is used by `createConfig` to merge base + custom configs.
 - Каждая новая задача начинается в новой ветке.
