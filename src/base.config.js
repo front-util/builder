@@ -55,6 +55,8 @@ export const baseConfig = ({
                     new rspack.SwcJsMinimizerRspackPlugin(),
                     new rspack.LightningCssMinimizerRspackPlugin()
                 ],
+                chunkIds    : 'deterministic',
+                runtimeChunk: 'single',
                 ...(useSplitChunks && {
                     splitChunks: getSplitChunksSettings(appDirName),
                 }),

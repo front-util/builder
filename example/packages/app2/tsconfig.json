@@ -13,7 +13,8 @@
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "app2/*": ["./src/*"]
+      "app2/*": ["./src/*"],
+      "@example/utils": ["../utils/src"]
     }
   },
   "include": ["src"]

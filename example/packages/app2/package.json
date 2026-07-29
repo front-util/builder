@@ -4,10 +4,11 @@
   "type": "module",
   "scripts": {
     "dev": "rspack serve",
-    "build": "NODE_ENV=production rspack build",
+    "build": "NODE_ENV=production rspack build --json stats.json",
     "check:lint": "eslint --max-warnings=0 --fix"
   },
   "dependencies": {
+    "@example/utils": "file:../utils",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

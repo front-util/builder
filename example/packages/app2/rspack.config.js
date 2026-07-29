@@ -8,7 +8,9 @@ export default createRspackConfig({
             createMFPlugin({
                 name: 'app2',
                 exposes: {
-                    './RemotePage': './src/components/remotePage.tsx',
+                    './RemotePage'   : './src/components/remotePage.tsx',
+                    './UserProfile'  : './src/components/userProfile.tsx',
+                    './SidebarWidget': './src/components/sidebarWidget.tsx',
                 },
             }),
         ],

@@ -17,6 +17,8 @@
     }
   },
   "devDependencies": {
+    "@rsdoctor/cli": "^1.6.1",
+    "@rsdoctor/rspack-plugin": "^1.6.1",
     "turbo": "^2.5.0"
   }
 }

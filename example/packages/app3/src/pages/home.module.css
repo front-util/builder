@@ -1,0 +1,35 @@
+.section {
+    padding: 24px;
+    background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+    border-radius: 12px;
+    color: #fff;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 16px;
+}
+
+.text {
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: 0.95;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+}
+
+.listItem {
+    padding: 6px 0;
+    font-size: 14px;
+}
+
+.listItem strong {
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+    padding: 1px 6px;
+    border-radius: 4px;
+}
