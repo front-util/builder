@@ -24,11 +24,10 @@ export const baseConfig = ({
     browserTargets,
     aliases,
     buildPath = `${rootDir}/dist`,
-    overlay = false,
     useSplitChunks = true,
 }) => {
     const isProduction = env.production;
-    const plugins = getPlugins(env, overlay);
+    const plugins = getPlugins(env);
     const rules = getRules(env, appDirName, browserTargets);
     const generator = getModuleGenerator();
 
@@ -51,9 +50,8 @@ export const baseConfig = ({
         devtool: isProduction ? 'source-map' : 'eval',
         ...isProduction && {
             optimization: {
-                minimize              : true,
-                removeAvailableModules: true,
-                minimizer             : [
+                minimize : true,
+                minimizer: [
                     new rspack.SwcJsMinimizerRspackPlugin(),
                     new rspack.LightningCssMinimizerRspackPlugin()
                 ],
@@ -75,9 +73,6 @@ export const baseConfig = ({
             generator,
         },
         plugins,
-        experiments: {
-            css: true,
-        },
     });
 };
 

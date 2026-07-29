@@ -14,7 +14,7 @@ Pre-commit hook uses `lint-staged` → `npm run check:lint` on `*.js` files (via
 
 - `src/` — all source, flat (no subdirectories). Entry: `src/index.js`
 - `types/index.d.ts` — hand-maintained type declarations (not generated)
-- Peer deps: `@rspack/cli`, `@rspack/core`, `@rspack/plugin-react-refresh` (^1.5.x)
+- Peer deps: `@rspack/cli`, `@rspack/core`, `@rspack/plugin-react-refresh` (^2.1.0 / ^2.0.0), `@rspack/dev-server` (^2.1.0)
 - Lint config: `@front-utils/linter` shared config
 
 ## Key conventions
@@ -25,3 +25,4 @@ Pre-commit hook uses `lint-staged` → `npm run check:lint` on `*.js` files (via
 - `npm` is the package manager. Use `npm` commands for local dev.
 - `webpack-merge` is used by `createConfig` to merge base + custom configs.
 - Каждая новая задача начинается в новой ветке.
+- По окончании задачи проверять линтинг проекта (`npm run check:lint`).

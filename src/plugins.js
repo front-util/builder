@@ -1,6 +1,6 @@
 import { RsdoctorRspackPlugin } from '@rsdoctor/rspack-plugin';
 import rspack from '@rspack/core';
-import ReactRefreshPlugin from '@rspack/plugin-react-refresh';
+import { ReactRefreshRspackPlugin } from '@rspack/plugin-react-refresh';
 import CompressionPlugin from 'compression-webpack-plugin';
 
 /** @typedef {import('../types/index.d.ts').Env} Env */
@@ -9,11 +9,9 @@ import CompressionPlugin from 'compression-webpack-plugin';
 /**
  * Generates an array of Rspack plugins based on the environment.
  * @param {Env} env - The environment object.
- * @param {boolean} [overlay=true] - Whether to show overlay for React Refresh.
  * @returns {Plugin[]} An array of Rspack plugins.
  */
-// eslint-disable-next-line unicorn/consistent-boolean-name
-export const getPlugins = (env, overlay = true) => {
+export const getPlugins = (env) => {
     const isProduction = env.production;
     const appName = process.env.npm_package_name;
     const plugins = [
@@ -60,9 +58,7 @@ export const getPlugins = (env, overlay = true) => {
     }
     else {
         plugins.push(
-            new ReactRefreshPlugin({
-                overlay,
-            }),
+            new ReactRefreshRspackPlugin(),
             new rspack.HotModuleReplacementPlugin()
         );
     }
