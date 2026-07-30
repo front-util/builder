@@ -89,6 +89,7 @@
   },
   "optionalDependencies": {
     "@module-federation/enhanced": "*",
+    "@module-federation/managers": "*",
     "@module-federation/retry-plugin": "*",
     "compression-webpack-plugin": "*",
     "@rspack/dev-server": "*"

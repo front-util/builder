@@ -27,5 +27,9 @@ build
 temp
 dist
 
+# generated
+stats.json
+.mf/
+
 # turbo
 .turbo

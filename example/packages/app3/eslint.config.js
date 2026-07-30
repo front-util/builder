@@ -12,7 +12,6 @@ export default defineConfig([
                 { 'src/**/*.{ts,tsx,js,jsx}': 'CAMEL_CASE' },
                 { ignoreMiddleExtensions: true },
             ],
-            'import-x/no-unresolved': ['error', { ignore: ['^app2/', '^app3/'] }],
         },
     },
     {

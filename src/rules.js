@@ -73,15 +73,12 @@ export const getRules = (env, appName, browserTargets) => {
         },
         {
             test: /\.module\.css$/,
-            use : [
-                {
-                    loader: 'builtin:lightningcss-loader',
-                    ...browserTargets && {
-                        /** @type {import('@rspack/core').LightningcssLoaderOptions} */
-                        options: browserTargets,
-                    },
-                }
-            ],
+            type: 'css/module',
+        },
+        {
+            test   : /\.css$/,
+            type   : 'css',
+            exclude: /\.module\.css$/,
         },
         {
             test: /\.(woff2|woff|otf|ttf|eot)?$/,

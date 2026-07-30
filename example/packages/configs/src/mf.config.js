@@ -5,12 +5,13 @@ export const createMFPlugin = (config, options) => {
     const mfOptions = createMFConfig(
         {
             shared: {
-                react: { singleton: true },
-                'react-dom': { singleton: true },
+                react           : { singleton: true },
+                'react-dom'     : { singleton: true },
+                '@example/utils': { singleton: true },
             },
             ...config,
         },
-        { retry: true, ...options },
+        { retry: true, useManagers: true, ...options },
     );
 
     return new ModuleFederationPlugin(mfOptions);

@@ -9,6 +9,7 @@ export default createRspackConfig({
                 name: 'app1',
                 remotes: {
                     app2: 'app2@http://localhost:3001/remoteEntry.js',
+                    app3: 'app3@http://localhost:3002/remoteEntry.js',
                 },
             }),
         ],

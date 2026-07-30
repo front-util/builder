@@ -1,0 +1,39 @@
+.section {
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 320px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    margin: 0 0 16px;
+}
+
+.avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.field {
+    font-size: 14px;
+    margin: 6px 0;
+    color: #555;
+}
+
+.fieldLabel {
+    font-weight: 600;
+    color: #333;
+}

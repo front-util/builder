@@ -12,23 +12,35 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
  * @param {MFConfigOptions} options - Options for module federation configuration.
  * @returns {ModuleFederationPluginOptions} - Complete module federation configuration.
  */
-export const createMFConfig = (config, options) => createModuleFederationConfig({
-    name         : options.name,
-    filename     : 'remoteEntry.js',
-    shareStrategy: 'loaded-first',
-    dts          : false,
-    dev          : process.env.NODE_ENV !== 'production',
-    experiments  : {
+export const createMFConfig = (config, options) => {
+    const experiments = {
         asyncStartup: true,
         optimization: {
             target: 'web',
         },
+        ...options.useManagers && {
+            managers: {
+                eager: false,
+            },
+        },
         ...config.experiments,
-    },
-    ...(options.retry && {
-        runtimePlugins: [
-            path.resolve(__dirname, './mf.retry-plugin.js')
-        ],
-    }),
-    ...config,
-});
+    };
+
+    return createModuleFederationConfig({
+        name         : options.name,
+        filename     : 'remoteEntry.js',
+        shareStrategy: 'loaded-first',
+        dts          : false,
+        dev          : process.env.NODE_ENV !== 'production',
+        experiments,
+        ...options.shared && {
+            shared: options.shared,
+        },
+        ...(options.retry && {
+            runtimePlugins: [
+                path.resolve(__dirname, './mf.retry-plugin.js')
+            ],
+        }),
+        ...config,
+    });
+};

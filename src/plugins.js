@@ -49,7 +49,9 @@ export const getPlugins = (env) => {
     ];
 
     if(process.env.RSDOCTOR) {
-        plugins.push(new RsdoctorRspackPlugin());
+        plugins.push(new RsdoctorRspackPlugin({
+            disableClientServer: true,
+        }));
     }
     if(isProduction) {
         plugins.push(new CompressionPlugin({

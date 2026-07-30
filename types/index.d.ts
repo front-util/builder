@@ -1,4 +1,4 @@
-import type { Configuration, RuleSetRule, Plugin, GeneratorOptionsByModuleType, ModuleFederationPluginOptions, DevServer, OptimizationSplitChunksOptions } from '@rspack/core';
+import type { Configuration, RuleSetRule, Plugin, GeneratorOptionsByModuleType, ModuleFederationPluginOptions, DevServer, OptimizationSplitChunksOptions, ModuleFederationPluginSharedOptions } from '@rspack/core';
 
 export interface Env {
   production?: boolean;
@@ -19,6 +19,8 @@ export interface MFConfigOptions {
   name: string;
   deps?: Record<string, string>;
   retry?: boolean;
+  shared?: Record<string, import('@rspack/core').ModuleFederationPluginSharedOptions>;
+  useManagers?: boolean;
 }
 
 export interface GenerateFileNameOptions {
