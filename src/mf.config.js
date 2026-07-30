@@ -13,26 +13,19 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
  * @returns {ModuleFederationPluginOptions} - Complete module federation configuration.
  */
 export const createMFConfig = (config, options) => {
-    const experiments = {
-        asyncStartup: true,
-        optimization: {
-            target: 'web',
-        },
-        ...options.useManagers && {
-            managers: {
-                eager: false,
-            },
-        },
-        ...config.experiments,
-    };
-
     return createModuleFederationConfig({
         name         : options.name,
         filename     : 'remoteEntry.js',
         shareStrategy: 'loaded-first',
         dts          : false,
         dev          : process.env.NODE_ENV !== 'production',
-        experiments,
+        experiments  : {
+            asyncStartup: true,
+            optimization: {
+                target: 'web',
+            },
+            ...config.experiments,
+        },
         ...options.shared && {
             shared: options.shared,
         },

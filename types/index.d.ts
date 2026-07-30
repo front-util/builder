@@ -20,7 +20,6 @@ export interface MFConfigOptions {
   deps?: Record<string, string>;
   retry?: boolean;
   shared?: Record<string, import('@rspack/core').ModuleFederationPluginSharedOptions>;
-  useManagers?: boolean;
 }
 
 export interface GenerateFileNameOptions {
