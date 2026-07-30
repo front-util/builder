@@ -11,7 +11,7 @@ export const createMFPlugin = (config, options) => {
             },
             ...config,
         },
-        { retry: true, useManagers: true, ...options },
+        { retry: true, ...options },
     );
 
     return new ModuleFederationPlugin(mfOptions);
