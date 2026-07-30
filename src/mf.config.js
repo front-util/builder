@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 /** @typedef {import('../types/index.d.ts').MFConfigOptions} MFConfigOptions */
+/** @typedef {import('@rspack/core').ModuleFederationPluginOptions} ModuleFederationPluginOptions */
 
 /**
  * Creates a module federation configuration.
