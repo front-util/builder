@@ -30,10 +30,7 @@
     "preserveUnused": true
   },
   "publishConfig": {
-    "access": "public",
-    "ignore": [
-      ".github/"
-    ]
+    "access": "public"
   },
   "keywords": [
     "Javascript",
