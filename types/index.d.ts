@@ -38,7 +38,7 @@ export function createMFConfig(config: Partial<ModuleFederationPluginOptions>, o
 export function getRules(env: Env, appName: string, browserTargets?: Record<string, number>): RuleSetRule[];
 export function getPlugins(env: Env): Plugin[];
 export function generateFileName(options: GenerateFileNameOptions): string | undefined;
-export function getModuleGenerator(): GeneratorOptionsByModuleType;
+export function getModuleGenerator(isProduction?: boolean): GeneratorOptionsByModuleType;
 export function convertBrowserTargetsToSwcTargets(browserTargets?: Record<string, number>): string[];
 
 // Additional types that might be useful

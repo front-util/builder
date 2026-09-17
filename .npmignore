@@ -7,6 +7,9 @@
 
 .gitignore
 lintstagedrc.json
+.opencode/
+skills/
+skills-lock.json
 
 eslint.config.js
 .lintstagedrc.json

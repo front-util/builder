@@ -29,7 +29,7 @@ export const baseConfig = ({
     const isProduction = env.production;
     const plugins = getPlugins(env);
     const rules = getRules(env, appDirName, browserTargets);
-    const generator = getModuleGenerator();
+    const generator = getModuleGenerator(isProduction);
 
     return defineConfig({
         context        : rootDir,
@@ -73,6 +73,16 @@ export const baseConfig = ({
         module: {
             rules,
             generator,
+            parser: {
+                'css/module': {
+                    namedExports: false,
+                    dashedIdents: false,
+                },
+                'css/auto': {
+                    namedExports: false,
+                    dashedIdents: false,
+                },
+            },
         },
         plugins,
     });

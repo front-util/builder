@@ -81,7 +81,7 @@ export const getRules = (env, appName, browserTargets) => {
             exclude: /\.module\.css$/,
         },
         {
-            test: /\.(woff2|woff|otf|ttf|eot)?$/,
+            test: /\.(woff2|woff|otf|ttf|eot)$/i,
             ...isProduction
                 ? {
                     type     : 'asset/resource',

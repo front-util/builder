@@ -4,15 +4,16 @@ import { ASSET_DIR_NAME } from './constants.js';
 
 /**
  * Generates module generator options for CSS modules.
+ * @param {boolean} [isProduction] - Whether the bundle is built for production.
  * @returns {import('@rspack/core').GeneratorOptionsByModuleType} The generator options for CSS modules.
  */
-export const getModuleGenerator = () => {
+export const getModuleGenerator = (isProduction = false) => {
     /** @type {import('@rspack/core').GeneratorOptionsByModuleType['css/auto']} */
     const cssGenRules = {
         exportsConvention: 'as-is',
         exportsOnly      : false,
         esModule         : true,
-        ...process.env.NODE_ENV === 'production' && {
+        ...isProduction && {
             localIdentName: 'app-[local]-[hash:base64:6]',
         },
     };
